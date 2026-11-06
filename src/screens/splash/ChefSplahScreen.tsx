@@ -7,10 +7,10 @@ export default function ChefSplahScreen() {
     <SplashCommonScreen>
       <Image
         source={require('../../assets/images/splash/chef.png')}
-        className="w-[474px] h-[474px]"
+        className="w-[374px] h-[374px]"
       />
       <View>
-        <Text className="text-5xl font-extrabold text-center text-gray-900 pb-3">
+        <Text className="text-4xl font-extrabold text-center text-gray-900 pb-3">
           Welcome to the most tastiest app
         </Text>
         <Text className="text-base text-gray-500 text-center">
