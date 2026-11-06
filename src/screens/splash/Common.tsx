@@ -1,4 +1,4 @@
-import { useNavigation, useRoutePath } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import React from 'react';
 import { Image, Pressable, Text, View } from 'react-native';
 
@@ -13,14 +13,15 @@ const screen = [
     name: 'BirthdayGirlSplahScreen',
   },
 ];
+
 export default function SplashCommonScreen({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const navigate = useNavigation();
-  const path = useRoutePath();
-  const isActive = screen.findIndex(item => item.name === path);
+  const navigate = useNavigation<any>();
+  const route = useRoute();
+  const isActive = screen.findIndex(item => item.name === route.name);
 
   const handleSkip = () => {
     navigate.navigate('BurgerSplahScreen');
@@ -30,6 +31,8 @@ export default function SplashCommonScreen({
     const nextScreen = screen[isActive + 1];
     if (nextScreen) {
       navigate.navigate(nextScreen.name);
+    } else {
+      navigate.navigate('BurgerSplahScreen');
     }
   };
 

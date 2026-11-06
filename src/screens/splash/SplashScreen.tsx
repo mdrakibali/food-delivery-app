@@ -1,5 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { SplashScreenList } from '../../navigation/types';
+import BirthdayGirlSplahScreen from './BirthdayGirlSplahScreen';
 import BurgerSplahScreen from './BurgerSplahScreen';
 import ChefSplahScreen from './ChefSplahScreen';
 import DeliverySplahScreen from './DeliverySplahScreen';
@@ -20,6 +21,10 @@ export default function SplashScreen() {
       <Stack.Screen
         name="DeliverySplahScreen"
         component={DeliverySplahScreen}
+      />
+      <Stack.Screen
+        name="BirthdayGirlSplahScreen"
+        component={BirthdayGirlSplahScreen}
       />
       <Stack.Screen name="BurgerSplahScreen" component={BurgerSplahScreen} />
     </Stack.Navigator>

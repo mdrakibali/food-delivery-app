@@ -1,13 +1,16 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Image, ImageBackground, View } from 'react-native';
-import { SplashScreenProps } from '../../navigation/types';
+import type { SplashScreenProps } from '../../navigation/types';
 
 function MainSplahScreen({ navigation }: SplashScreenProps<'MainSplahScreen'>) {
   useEffect(() => {
-    setTimeout(() => {
-      navigation.navigate('ChefSplahScreen');
+    const timer = setTimeout(() => {
+      navigation.replace('ChefSplahScreen');
     }, 2000);
-  });
+
+    return () => clearTimeout(timer);
+  }, [navigation]);
+
   return (
     <View className="flex-1 items-center justify-center">
       <ImageBackground
@@ -17,6 +20,7 @@ function MainSplahScreen({ navigation }: SplashScreenProps<'MainSplahScreen'>) {
         <Image
           source={require('../../assets/images/logo/logo.png')}
           className="w-[200px] h-[120px]"
+          resizeMode="contain"
         />
       </ImageBackground>
     </View>

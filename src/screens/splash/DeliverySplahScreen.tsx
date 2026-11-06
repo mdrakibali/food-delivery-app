@@ -10,7 +10,7 @@ export default function DeliverySplahScreen() {
         className="w-[474px] h-[474px]"
       />
       <View>
-        <Text className="text-5xl font-extrabold text-center text-gray-900  pb-3">
+        <Text className="text-5xl font-extrabold text-center text-gray-900 pb-3">
           We use nitro on bicycles for delivery!
         </Text>
         <Text className="text-base text-gray-500 text-center">

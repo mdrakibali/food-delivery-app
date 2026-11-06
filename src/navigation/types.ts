@@ -24,7 +24,7 @@ export type MainTabParamList = {
 
 // 3. Root Stack Param List (Main Parent)
 export type RootStackParamList = {
-  Splash: undefined;
+  Splash: NavigatorScreenParams<SplashScreenList> | undefined;
   Auth: NavigatorScreenParams<AuthStackParamList>;
   Main: NavigatorScreenParams<MainTabParamList>;
 };
@@ -35,6 +35,7 @@ export type RootStackScreenProps<T extends keyof RootStackParamList> =
 
 export type SplashScreenProps<T extends keyof SplashScreenList> =
   NativeStackScreenProps<SplashScreenList, T>;
+
 export type AuthStackScreenProps<T extends keyof AuthStackParamList> =
   NativeStackScreenProps<AuthStackParamList, T>;
 
@@ -46,4 +47,3 @@ declare global {
     interface RootParamList extends RootStackParamList {}
   }
 }
-
