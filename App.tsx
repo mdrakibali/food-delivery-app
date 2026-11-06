@@ -1,45 +1,43 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import React from 'react';
+import { StatusBar } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import './global.css';
 
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
-
-function App() {
-  const isDarkMode = useColorScheme() === 'dark';
-
+function App(): React.JSX.Element {
   return (
-    <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppContent />
-    </SafeAreaProvider>
+    // eslint-disable-next-line react-native/no-inline-styles
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <SafeAreaProvider>
+        <StatusBar barStyle="dark-content" />
+        {/* State Provider / Redux wrapper ekhane hobe */}
+        {/* <Provider store={store}> */}
+
+        {/* App er Root Navigation Container */}
+        {/* <RootNavigator /> */}
+
+        {/* Temporary Placeholder joto khon navigation na boshan */}
+        <AppContentPlaceholder />
+
+        {/* </Provider> */}
+      </SafeAreaProvider>
+    </GestureHandlerRootView>
   );
 }
 
-function AppContent() {
-  const safeAreaInsets = useSafeAreaInsets();
-
+// Temporary development placeholder (eta pore Navigation diye replace hobe)
+import { Text, View } from 'react-native';
+function AppContentPlaceholder() {
   return (
-    <View style={styles.container}>
-      <NewAppScreen
-        templateFileName="App.tsx"
-        safeAreaInsets={safeAreaInsets}
-      />
+    <View className="flex-1 items-center justify-center bg-zinc-50">
+      <Text className="text-2xl font-bold text-orange-600">
+        Food Delivery App
+      </Text>
+      <Text className="text-sm text-zinc-500 mt-1">
+        Architecture Ready for Production 🚀
+      </Text>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 export default App;
