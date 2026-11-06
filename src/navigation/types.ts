@@ -6,6 +6,7 @@ export type SplashScreenList = {
   MainSplahScreen: undefined;
   ChefSplahScreen: undefined;
   DeliverySplahScreen: undefined;
+  BirthdayGirlSplahScreen: undefined;
   BurgerSplahScreen: undefined;
 };
 
