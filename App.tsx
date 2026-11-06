@@ -2,7 +2,10 @@ import React from 'react';
 import { StatusBar } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { NavigationContainer } from '@react-navigation/native';
 import './global.css';
+
+import RootNavigator from './src/navigation/RootNavigator';
 
 function App(): React.JSX.Element {
   return (
@@ -10,12 +13,9 @@ function App(): React.JSX.Element {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <SafeAreaProvider>
         <StatusBar barStyle="dark-content" />
-        {/* State Provider / Redux wrapper ekhane hobe */}
-        {/* <Provider store={store}> */}
-
-        {/* App er Root Navigation Container */}
-        {/* <RootNavigator /> */}
-        {/* </Provider> */}
+        <NavigationContainer>
+          <RootNavigator />
+        </NavigationContainer>
       </SafeAreaProvider>
     </GestureHandlerRootView>
   );
