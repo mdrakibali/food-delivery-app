@@ -1,6 +1,13 @@
+import type { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import type { NavigatorScreenParams } from '@react-navigation/native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
-import type { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
+
+export type SplashScreenList = {
+  MainSplahScreen: undefined;
+  ChefSplahScreen: undefined;
+  DeliverySplahScreen: undefined;
+  BurgerSplahScreen: undefined;
+};
 
 // 1. Auth Stack Param List
 export type AuthStackParamList = {
@@ -25,6 +32,8 @@ export type RootStackParamList = {
 export type RootStackScreenProps<T extends keyof RootStackParamList> =
   NativeStackScreenProps<RootStackParamList, T>;
 
+export type SplashScreenProps<T extends keyof SplashScreenList> =
+  NativeStackScreenProps<SplashScreenList, T>;
 export type AuthStackScreenProps<T extends keyof AuthStackParamList> =
   NativeStackScreenProps<AuthStackParamList, T>;
 

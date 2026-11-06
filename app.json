@@ -1,4 +1,7 @@
 {
   "name": "FoodDelivery",
-  "displayName": "FoodDelivery"
+  "displayName": "FoodDelivery",
+  "assets": [
+    "./src/assets/images/logo/logo.png"
+  ]
 }

@@ -1,8 +1,10 @@
 import React from 'react';
-import { View, Text, Button } from 'react-native';
+import { Button, Text, View } from 'react-native';
 import type { MainTabScreenProps } from '../../navigation/types';
 
-export default function ProfileScreen({ navigation }: MainTabScreenProps<'Profile'>) {
+export default function ProfileScreen({
+  navigation,
+}: MainTabScreenProps<'Profile'>) {
   return (
     <View className="flex-1 items-center justify-center bg-white p-4">
       <Text className="text-2xl font-bold mb-6">Profile Screen</Text>
@@ -15,10 +17,11 @@ export default function ProfileScreen({ navigation }: MainTabScreenProps<'Profil
         <Button
           title="Logout"
           color="#EF4444"
-          onPress={() => navigation.navigate('Auth' as any, { screen: 'Login' })}
+          onPress={() =>
+            navigation.navigate('Auth' as any, { screen: 'Login' })
+          }
         />
       </View>
     </View>
   );
 }
-
