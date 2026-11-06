@@ -2,11 +2,22 @@
   "name": "FoodDelivery",
   "version": "0.0.1",
   "private": true,
-  "scripts": {
-    "android": "react-native run-android",
+"scripts": {
+    "start": "react-native start",
+    "reverse": "adb reverse tcp:8081 tcp:8081",
+    "mirror": "scrcpy &",
+    "build:first": "npm run reverse && react-native run-android",
+    "open": "adb shell am start -n com.fooddelivery/.MainActivity",
+    "dev": "npm run reverse && react-native start",
+    "dev:clean": "npm run reverse && react-native start --reset-cache",
+    "run:ready": "npm run reverse && npm run mirror && npm run open && react-native start",
+    "reload": "adb shell input text 'rr'",
+    "menu": "adb shell input keyevent 82",
+    "clean:app": "adb shell pm clear com.fooddelivery",
+    "clean:android": "cd android && ./gradlew clean && cd ..",
+    "clean:all": "npm run clean:app && npm run clean:android",
     "ios": "react-native run-ios",
     "lint": "eslint .",
-    "start": "react-native start",
     "test": "jest"
   },
   "dependencies": {

@@ -15,28 +15,9 @@ function App(): React.JSX.Element {
 
         {/* App er Root Navigation Container */}
         {/* <RootNavigator /> */}
-
-        {/* Temporary Placeholder joto khon navigation na boshan */}
-        <AppContentPlaceholder />
-
         {/* </Provider> */}
       </SafeAreaProvider>
     </GestureHandlerRootView>
-  );
-}
-
-// Temporary development placeholder (eta pore Navigation diye replace hobe)
-import { Text, View } from 'react-native';
-function AppContentPlaceholder() {
-  return (
-    <View className="flex-1 items-center justify-center bg-zinc-50">
-      <Text className="text-2xl font-bold text-orange-600">
-        Food Delivery App
-      </Text>
-      <Text className="text-sm text-zinc-500 mt-1">
-        Architecture Ready for Production 🚀
-      </Text>
-    </View>
   );
 }
 

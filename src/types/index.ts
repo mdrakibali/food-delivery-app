@@ -13,4 +13,3 @@ export interface FoodItem {
   deliveryTime: string;
   image?: string;
 }
-
