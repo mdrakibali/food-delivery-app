@@ -38,7 +38,7 @@ export default function ProductDetailsScreen({
   route,
   navigation,
 }: RootStackScreenProps<'ProductDetails'>) {
-  const { product } = route.params;
+  const product = route?.params?.product;
   const insets = useSafeAreaInsets();
 
   const [quantity, setQuantity] = useState<number>(1);
@@ -47,12 +47,26 @@ export default function ProductDetailsScreen({
 
   const toggleAddon = (id: string) => {
     setSelectedAddons(prev =>
-      prev.includes(id) ? prev.filter(item => item !== id) : [...prev, id]
+      prev.includes(id) ? prev.filter(item => item !== id) : [...prev, id],
     );
   };
 
   const handleIncrement = () => setQuantity(q => q + 1);
   const handleDecrement = () => setQuantity(q => (q > 1 ? q - 1 : 1));
+
+  if (!product) {
+    return (
+      <View className="flex-1 bg-white items-center justify-center p-6">
+        <Text className="text-base text-gray-500 mb-4">No product selected</Text>
+        <Pressable
+          onPress={() => navigation.goBack()}
+          className="bg-[#54A312] px-6 py-3 rounded-xl"
+        >
+          <Text className="text-white font-bold">Go Back</Text>
+        </Pressable>
+      </View>
+    );
+  }
 
   // Calculate total price based on base price, quantity and selected addons
   const addonsTotal = selectedAddons.reduce((sum, addonId) => {
