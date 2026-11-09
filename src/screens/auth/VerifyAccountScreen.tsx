@@ -89,8 +89,8 @@ export default function VerifyAccountScreen({
       return;
     }
     setError('');
-    // Account verified successfully -> Navigate to Main App
-    navigation.getParent()?.navigate('Main');
+    // Account verified successfully -> Navigate to Create Profile
+    navigation.navigate('CreateProfile');
   };
 
   return (

@@ -1,5 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
+import CreateProfileScreen from '../screens/auth/CreateProfileScreen';
 import ForgotPasswordScreen from '../screens/auth/ForgotPasswordScreen';
 import LoginScreen from '../screens/auth/LoginScreen';
 import RegisterScreen from '../screens/auth/RegisterScreen';
@@ -28,6 +29,7 @@ export default function AuthNavigator() {
         component={VerifyForgotPasswordScreen}
       />
       <Stack.Screen name="ResetPassword" component={ResetPasswordScreen} />
+      <Stack.Screen name="CreateProfile" component={CreateProfileScreen} />
     </Stack.Navigator>
   );
 }
