@@ -62,7 +62,7 @@ export default function AuthLayout({
             hitSlop={10}
           >
             <ChevronLeft size={18} color="#222" />
-            <Text className="text-base font-semibold text-gray-800">Back</Text>
+            <Text className="text-xl font-semibold text-gray-800">Back</Text>
           </Pressable>
 
           <Image

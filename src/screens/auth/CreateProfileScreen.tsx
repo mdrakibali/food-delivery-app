@@ -182,7 +182,7 @@ export default function CreateProfileScreen({
 
               {/* Phone Number Input */}
               <TextInput
-                placeholder="phone number"
+                placeholder="Enter your phone number"
                 placeholderTextColor="#9CA3AF"
                 value={phoneNumber}
                 onChangeText={text => {
@@ -211,7 +211,7 @@ export default function CreateProfileScreen({
           {/* Date of Birth Input */}
           <View>
             <TextInput
-              placeholder="date of birth"
+              placeholder="Enter your date of birth"
               placeholderTextColor="#9CA3AF"
               value={dateOfBirth}
               onChangeText={setDateOfBirth}
@@ -226,7 +226,7 @@ export default function CreateProfileScreen({
           {/* Address Input with Chevron */}
           <View className="relative justify-center">
             <TextInput
-              placeholder="Address"
+              placeholder="Enter your address"
               placeholderTextColor="#9CA3AF"
               value={address}
               onChangeText={setAddress}

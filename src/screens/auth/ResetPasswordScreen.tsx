@@ -72,7 +72,7 @@ export default function ResetPasswordScreen({
                 onFocus={() => setIsPasswordFocused(true)}
                 onBlur={() => setIsPasswordFocused(false)}
                 secureTextEntry={!showPassword}
-                placeholder="new password"
+                placeholder="Enter your new password"
                 placeholderTextColor="#9CA3AF"
                 className={`w-full h-[54px] border px-4 pr-12 rounded-xl text-base text-gray-900 bg-white ${
                   passwordError
@@ -113,7 +113,7 @@ export default function ResetPasswordScreen({
                 onFocus={() => setIsConfirmPasswordFocused(true)}
                 onBlur={() => setIsConfirmPasswordFocused(false)}
                 secureTextEntry={!showConfirmPassword}
-                placeholder="re-enter the new password"
+                placeholder="Re-enter your new password"
                 placeholderTextColor="#9CA3AF"
                 className={`w-full h-[54px] border px-4 pr-12 rounded-xl text-base text-gray-900 bg-white ${
                   confirmPasswordError

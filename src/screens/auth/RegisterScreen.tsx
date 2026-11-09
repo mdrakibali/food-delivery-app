@@ -68,7 +68,7 @@ export default function RegisterScreen({
           {/* Email Input */}
           <View>
             <TextInput
-              placeholder="email address"
+              placeholder="Enter your email address"
               placeholderTextColor="#9CA3AF"
               value={email}
               onChangeText={text => {
@@ -106,7 +106,7 @@ export default function RegisterScreen({
                 onFocus={() => setIsPasswordFocused(true)}
                 onBlur={() => setIsPasswordFocused(false)}
                 secureTextEntry={!showPassword}
-                placeholder="password"
+                placeholder="Enter your password"
                 placeholderTextColor="#9CA3AF"
                 className={`w-full h-[54px] border px-4 pr-12 rounded-xl text-base text-gray-900 bg-white ${
                   passwordError
