@@ -1,6 +1,20 @@
 import type { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import type { NavigatorScreenParams } from '@react-navigation/native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+import type { ImageSourcePropType } from 'react-native';
+
+export interface ProductItem {
+  id: string;
+  name: string;
+  category: string;
+  price: number;
+  rating?: number;
+  reviewsCount?: number;
+  deliveryTime?: string;
+  calories?: string;
+  description?: string;
+  image: ImageSourcePropType;
+}
 
 // 1. Auth Stack Param List
 export type AuthStackParamList = {
@@ -30,6 +44,7 @@ export type RootStackParamList = {
   Welcome: undefined;
   Auth: NavigatorScreenParams<AuthStackParamList>;
   Main: NavigatorScreenParams<MainTabParamList>;
+  ProductDetails: { product: ProductItem };
 };
 
 // Type helpers for navigation props in screens

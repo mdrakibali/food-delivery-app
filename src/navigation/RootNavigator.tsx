@@ -5,6 +5,7 @@ import type { RootStackParamList } from './types';
 import OnboardingScreen from '../screens/splash/OnboardingScreen';
 import SplashScreen from '../screens/splash/SplashScreen';
 import WelcomeScreen from '../screens/splash/WelcomeScreen';
+import ProductDetailsScreen from '../screens/main/ProductDetailsScreen';
 import AuthNavigator from './AuthNavigator';
 import MainNavigator from './MainNavigator';
 
@@ -45,6 +46,13 @@ export default function RootNavigator() {
 
       {/* 5. Main App (Bottom Tabs: Home, Profile) */}
       <Stack.Screen name="Main" component={MainNavigator} />
+
+      {/* 6. Product Details Screen */}
+      <Stack.Screen
+        name="ProductDetails"
+        component={ProductDetailsScreen}
+        options={{ animation: 'slide_from_right' }}
+      />
     </Stack.Navigator>
   );
 }

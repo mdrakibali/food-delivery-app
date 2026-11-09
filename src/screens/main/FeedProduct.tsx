@@ -1,20 +1,13 @@
+import { useNavigation } from '@react-navigation/native';
+import type { NavigationProp } from '@react-navigation/native';
 import { Plus, Star } from 'lucide-react-native';
 import React, { useState } from 'react';
-import type { ImageSourcePropType } from 'react-native';
 import { FlatList, Image, Pressable, Text, View } from 'react-native';
+import type { ProductItem, RootStackParamList } from '../../navigation/types';
 
 interface CategoryItem {
   id: string;
   name: string;
-}
-
-interface ProductItem {
-  id: string;
-  name: string;
-  category: string;
-  price: number;
-  rating?: number;
-  image: ImageSourcePropType;
 }
 
 const CATEGORIES: readonly CategoryItem[] = [
@@ -98,6 +91,7 @@ const PRODUCTS: readonly ProductItem[] = [
 ];
 
 export default function FeedProduct() {
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   const [activeCategory, setActiveCategory] = useState<string>('Offers');
 
   const filteredProducts =
@@ -150,7 +144,8 @@ export default function FeedProduct() {
         {filteredProducts.map(product => (
           <Pressable
             key={product.id}
-            className="w-[48%] bg-white rounded-3xl p-2.5 mb-4 shadow-sm border border-gray-100"
+            onPress={() => navigation.navigate('ProductDetails', { product })}
+            className="w-[48%] bg-white rounded-3xl p-2.5 mb-4 shadow-sm border border-gray-100 active:opacity-90"
           >
             {/* Product Image Container */}
             <View className="relative w-full h-36 rounded-2xl overflow-hidden bg-gray-50">
@@ -185,6 +180,9 @@ export default function FeedProduct() {
               </Text>
               <Pressable
                 hitSlop={8}
+                onPress={() =>
+                  navigation.navigate('ProductDetails', { product })
+                }
                 className="w-8 h-8 rounded-full bg-[#EDF4EA] items-center justify-center active:opacity-70"
               >
                 <Plus size={18} color="#54A312" strokeWidth={2.5} />
