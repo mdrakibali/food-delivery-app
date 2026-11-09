@@ -1,8 +1,9 @@
 import { useNavigation } from '@react-navigation/native';
 import { MoveLeftIcon } from 'lucide-react-native';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import {
   Image,
+  Keyboard,
   KeyboardAvoidingView,
   Platform,
   Pressable,
@@ -17,6 +18,22 @@ export default function AuthLayout({
   children: React.ReactNode;
 }) {
   const navigate = useNavigation<any>();
+  const scrollViewRef = useRef<React.ElementRef<typeof ScrollView>>(null);
+
+  useEffect(() => {
+    const showEvent =
+      Platform.OS === 'ios' ? 'keyboardWillShow' : 'keyboardDidShow';
+
+    const showSub = Keyboard.addListener(showEvent, () => {
+      setTimeout(() => {
+        scrollViewRef.current?.scrollToEnd({ animated: true });
+      }, 100);
+    });
+
+    return () => {
+      showSub.remove();
+    };
+  }, []);
 
   const handleBack = () => {
     if (navigate.canGoBack()) {
@@ -29,18 +46,19 @@ export default function AuthLayout({
 
   return (
     <KeyboardAvoidingView
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      behavior="padding"
       className="flex-1 bg-white"
     >
       <ScrollView
+        ref={scrollViewRef}
         // eslint-disable-next-line react-native/no-inline-styles
         contentContainerStyle={{ flexGrow: 1 }}
         keyboardShouldPersistTaps="handled"
         showsVerticalScrollIndicator={false}
-        className="flex-1 bg-white px-6 py-16"
+        className="flex-1 bg-white px-6 py-12"
       >
         {/* Header: Back Button & Center Logo */}
-        <View className="flex-row items-center justify-between mb-5">
+        <View className="flex-row items-center justify-between mb-8">
           <Pressable
             className="flex-row items-center gap-1.5 py-1"
             onPress={handleBack}
