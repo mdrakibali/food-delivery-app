@@ -3,6 +3,6 @@
     "files.associations": {
         "*.css": "tailwindcss"
     },
-    "editor.hover.sticky": false,
-    "editor.hover.hidingDelay": 100
+    // "editor.hover.sticky": false,
+    // "editor.hover.hidingDelay": 100
 }
