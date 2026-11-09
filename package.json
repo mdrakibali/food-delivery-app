@@ -7,6 +7,7 @@
     "reverse": "adb reverse tcp:8081 tcp:8081",
     "mirror": "scrcpy &",
     "build:first": "npm run reverse && react-native run-android",
+    "build:apk": "cd android && ./gradlew assembleRelease && cd ..",
     "open": "adb shell am start -n com.fooddelivery/.MainActivity",
     "dev": "npm run reverse && react-native start",
     "dev:clean": "npm run reverse && react-native start --reset-cache",
