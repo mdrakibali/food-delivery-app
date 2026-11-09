@@ -1,7 +1,14 @@
 import type { BottomTabBarProps } from '@react-navigation/bottom-tabs';
-import { Bell, Compass, Heart, Home, ShoppingCart } from 'lucide-react-native';
+import {
+  Bell,
+  Compass,
+  Heart,
+  Home,
+  ShoppingCart,
+  Triangle,
+} from 'lucide-react-native';
 import React from 'react';
-import { Pressable, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 type TabName = 'Home' | 'Explore' | 'Cart' | 'Favorite' | 'Notification';
@@ -45,7 +52,8 @@ export default function CustomBottomTabBar({
   navigation,
 }: BottomTabBarProps) {
   const insets = useSafeAreaInsets();
-  const bottomPadding = Math.max(insets.bottom, 12);
+  // Ensure enough breathing space above the iPhone home indicator
+  const bottomPadding = Math.max(insets.bottom, 16);
 
   return (
     <View
@@ -83,11 +91,31 @@ export default function CustomBottomTabBar({
             hitSlop={12}
             className="items-center justify-center py-1 px-3"
           >
-            {/* Tab Icon */}
-            <TabIcon name={tabName} focused={isFocused} />
+            {/* Tab Icon - Active thakle samanno baka (-8deg) hobe */}
+            <View style={isFocused ? styles.activeIcon : undefined}>
+              <TabIcon name={tabName} focused={isFocused} />
+            </View>
+
+            {/* Active Green Triangle Indicator */}
+            {isFocused ? (
+              <Triangle
+                size={7}
+                color="#54A312"
+                fill="#54A312"
+                className="mt-1"
+              />
+            ) : (
+              <View className="h-[7px] mt-1" />
+            )}
           </Pressable>
         );
       })}
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  activeIcon: {
+    transform: [{ rotate: '-8deg' }],
+  },
+});
