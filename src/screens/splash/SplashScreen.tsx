@@ -1,32 +1,32 @@
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { SplashScreenList } from '../../navigation/types';
-import BirthdayGirlSplahScreen from './BirthdayGirlSplahScreen';
-import BurgerSplahScreen from './BurgerSplahScreen';
-import ChefSplahScreen from './ChefSplahScreen';
-import DeliverySplahScreen from './DeliverySplahScreen';
-import MainSplahScreen from './MainSplahScreen';
+import React, { useEffect } from 'react';
+import { Image, View } from 'react-native';
+import type { RootStackScreenProps } from '../../navigation/types';
 
-const Stack = createNativeStackNavigator<SplashScreenList>();
-export default function SplashScreen() {
+export default function SplashScreen({ navigation }: RootStackScreenProps<'Splash'>) {
+  useEffect(() => {
+    // 2 second pore auto Onboarding screen e niye jabe
+    const timer = setTimeout(() => {
+      navigation.replace('Onboarding');
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, [navigation]);
+
   return (
-    <Stack.Navigator
-      initialRouteName="MainSplahScreen"
-      screenOptions={{
-        headerShown: false,
-        animation: 'slide_from_right',
-      }}
-    >
-      <Stack.Screen name="MainSplahScreen" component={MainSplahScreen} />
-      <Stack.Screen name="ChefSplahScreen" component={ChefSplahScreen} />
-      <Stack.Screen
-        name="DeliverySplahScreen"
-        component={DeliverySplahScreen}
+    <View className="flex-1 justify-center items-center">
+      {/* Background Image (Absolute positioned) */}
+      <Image
+        source={require('../../assets/images/splash/background.png')}
+        className="absolute w-full h-full"
+        resizeMode="cover"
       />
-      <Stack.Screen
-        name="BirthdayGirlSplahScreen"
-        component={BirthdayGirlSplahScreen}
+
+      {/* Center Logo */}
+      <Image
+        source={require('../../assets/images/logo/logo.png')}
+        className="w-[200px] h-[120px]"
+        resizeMode="contain"
       />
-      <Stack.Screen name="BurgerSplahScreen" component={BurgerSplahScreen} />
-    </Stack.Navigator>
+    </View>
   );
 }

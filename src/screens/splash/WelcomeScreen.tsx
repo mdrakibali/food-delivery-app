@@ -1,14 +1,12 @@
-import { useNavigation } from '@react-navigation/native';
-import { Apple, Mail } from 'lucide-react-native';
 import React from 'react';
 import { Image, Pressable, Text, View } from 'react-native';
+import { Apple, Mail } from 'lucide-react-native';
 import { FacebookIcon, GoogleIcon } from '../../components/common/SocialIcons';
+import type { RootStackScreenProps } from '../../navigation/types';
 
-export default function BurgerSplahScreen() {
-  const navigation = useNavigation<any>();
-
+export default function WelcomeScreen({ navigation }: RootStackScreenProps<'Welcome'>) {
   const handleNavigateToAuth = () => {
-    // Login Screen e niye jabe
+    // Login Screen (Auth) e niye jabe
     navigation.replace('Auth', { screen: 'Login' });
   };
 
@@ -24,7 +22,7 @@ export default function BurgerSplahScreen() {
       {/* Center Burger Image */}
       <Image
         source={require('../../assets/images/splash/burger.png')}
-        className="w-[374px] h-[374px]"
+        className="w-[474px] h-[474px] max-w-full max-h-[340px]"
         resizeMode="contain"
       />
 
@@ -60,7 +58,9 @@ export default function BurgerSplahScreen() {
             className="flex-1 h-[52px] rounded-xl bg-[#ECF1E8] flex-row justify-center items-center gap-x-1.5 active:opacity-80"
           >
             <GoogleIcon size={18} />
-            <Text className="font-bold text-[#5EAD1D] text-xs">Google</Text>
+            <Text className="font-bold text-[#5EAD1D] text-xs">
+              Google
+            </Text>
           </Pressable>
 
           <Pressable
@@ -68,7 +68,9 @@ export default function BurgerSplahScreen() {
             className="flex-1 h-[52px] rounded-xl bg-[#ECF1E8] flex-row justify-center items-center gap-x-1.5 active:opacity-80"
           >
             <FacebookIcon size={18} />
-            <Text className="font-bold text-[#5EAD1D] text-xs">Facebook</Text>
+            <Text className="font-bold text-[#5EAD1D] text-xs">
+              Facebook
+            </Text>
           </Pressable>
 
           <Pressable
@@ -76,10 +78,13 @@ export default function BurgerSplahScreen() {
             className="flex-1 h-[52px] rounded-xl bg-[#ECF1E8] flex-row justify-center items-center gap-x-1.5 active:opacity-80"
           >
             <Mail size={18} color="#5EAD1D" />
-            <Text className="font-bold text-[#5EAD1D] text-xs">Email</Text>
+            <Text className="font-bold text-[#5EAD1D] text-xs">
+              Email
+            </Text>
           </Pressable>
         </View>
       </View>
     </View>
   );
 }
+
