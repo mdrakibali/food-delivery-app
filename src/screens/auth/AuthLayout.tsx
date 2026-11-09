@@ -16,15 +16,20 @@ export default function AuthLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const navigate = useNavigation();
+  const navigate = useNavigation<any>();
 
   const handleBack = () => {
-    navigate.goBack();
+    if (navigate.canGoBack()) {
+      navigate.goBack();
+    } else {
+      // Jodi kono karone stack khali thake, parent er Welcome screen e niye jabe
+      navigate.getParent()?.navigate('Welcome');
+    }
   };
 
   return (
     <KeyboardAvoidingView
-      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       className="flex-1 bg-white"
     >
       <ScrollView
@@ -32,10 +37,10 @@ export default function AuthLayout({
         contentContainerStyle={{ flexGrow: 1 }}
         keyboardShouldPersistTaps="handled"
         showsVerticalScrollIndicator={false}
-        className="flex-1 bg-white px-6 py-12"
+        className="flex-1 bg-white px-6 py-16"
       >
         {/* Header: Back Button & Center Logo */}
-        <View className="flex-row items-center justify-between mb-8">
+        <View className="flex-row items-center justify-between mb-5">
           <Pressable
             className="flex-row items-center gap-1.5 py-1"
             onPress={handleBack}

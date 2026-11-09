@@ -8,8 +8,8 @@ export default function WelcomeScreen({
   navigation,
 }: RootStackScreenProps<'Welcome'>) {
   const handleNavigateToAuth = () => {
-    // Login Screen (Auth) e niye jabe
-    navigation.replace('Auth', { screen: 'Login' });
+    // Login Screen (Auth) e niye jabe (navigate dile stack e history thake, tai Back button kaj korbe)
+    navigation.navigate('Auth', { screen: 'Login' });
   };
 
   return (

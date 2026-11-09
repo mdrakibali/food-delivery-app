@@ -70,7 +70,7 @@ export default function LoginScreen({
               }`}
             />
             {emailError ? (
-              <Text className="text-red-500 text-xs px-1 pt-1">
+              <Text className="text-red-500 text-xs px-1 pt-1 font-medium">
                 {emailError}
               </Text>
             ) : null}
@@ -111,7 +111,7 @@ export default function LoginScreen({
               </Pressable>
             </View>
             {passwordError ? (
-              <Text className="text-red-500 text-xs px-1 pt-1">
+              <Text className="text-red-500 text-xs px-1 pt-1 font-medium">
                 {passwordError}
               </Text>
             ) : null}
