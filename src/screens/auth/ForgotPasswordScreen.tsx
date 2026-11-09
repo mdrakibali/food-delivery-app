@@ -22,8 +22,12 @@ export default function ForgotPasswordScreen({
     <AuthLayout>
       <View className="flex-1 justify-between">
         <View className="flex gap-4">
-          <Text className="text-4xl font-extrabold text-[#363A33] mb-3 leading-tight">
+          <Text className="text-4xl font-extrabold text-[#363A33] mb-1 leading-tight">
             Forgot your{'\n'}password
+          </Text>
+
+          <Text className="text-base text-gray-500 leading-relaxed">
+            Enter your email address to receive a verification code
           </Text>
           {/* Email Input */}
           <View>

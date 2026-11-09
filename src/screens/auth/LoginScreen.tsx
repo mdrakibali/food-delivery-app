@@ -41,10 +41,14 @@ export default function LoginScreen({
   return (
     <AuthLayout>
       <View className="flex-1 justify-between">
-        {/* Top Section: Title & Inputs */}
+        {/* Top Section: Title, Subtitle & Inputs */}
         <View className="flex gap-4">
-          <Text className="text-4xl font-extrabold text-[#363A33] mb-3 leading-tight">
+          <Text className="text-4xl font-extrabold text-[#363A33] mb-1 leading-tight">
             Log in to your{'\n'}account
+          </Text>
+
+          <Text className="text-base text-gray-500 leading-relaxed">
+            Please sign in to your existing account
           </Text>
 
           {/* Email Input */}

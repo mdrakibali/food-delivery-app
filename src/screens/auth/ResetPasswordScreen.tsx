@@ -56,7 +56,7 @@ export default function ResetPasswordScreen({
             Create a new{'\n'}password
           </Text>
 
-          <Text className="text-base text-gray-500 mb-2">
+          <Text className="text-base text-gray-500 leading-relaxed">
             Enter a new password and try not to forget it.
           </Text>
 

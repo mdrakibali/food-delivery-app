@@ -99,7 +99,7 @@ export default function VerifyForgotPasswordScreen({
         {/* Top Section: Title, Subtitle & OTP Inputs */}
         <View className="flex gap-4">
           <Text className="text-4xl font-extrabold text-[#222222] mb-1 leading-tight">
-            Verify your{'\n'}account
+            Verify forgot{'\n'}password
           </Text>
 
           <Text className="text-base text-gray-500 leading-relaxed">

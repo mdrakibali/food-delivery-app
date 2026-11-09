@@ -2,8 +2,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 import type { RootStackParamList } from './types';
 
-import SplashScreen from '../screens/splash/SplashScreen';
 import OnboardingScreen from '../screens/splash/OnboardingScreen';
+import SplashScreen from '../screens/splash/SplashScreen';
 import WelcomeScreen from '../screens/splash/WelcomeScreen';
 import AuthNavigator from './AuthNavigator';
 import MainNavigator from './MainNavigator';
@@ -37,7 +37,11 @@ export default function RootNavigator() {
       />
 
       {/* 4. Auth Flow (Login, Register) */}
-      <Stack.Screen name="Auth" component={AuthNavigator} />
+      <Stack.Screen
+        name="Auth"
+        component={AuthNavigator}
+        options={{ animation: 'slide_from_right' }}
+      />
 
       {/* 5. Main App (Bottom Tabs: Home, Profile) */}
       <Stack.Screen name="Main" component={MainNavigator} />
