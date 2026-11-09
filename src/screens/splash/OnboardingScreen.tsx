@@ -45,7 +45,7 @@ export default function OnboardingScreen({ navigation }: RootStackScreenProps<'O
   const [activeIndex, setActiveIndex] = useState(0);
   const flatListRef = useRef<FlatList>(null);
 
-  // User jokhon swipe korbe, edge-to-edge width diye offset nikhut vabe hishab hobe
+  // Real-time scroll listener: swipe korar sathe sathe smooth vabe index update hobe
   const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const scrollOffset = event.nativeEvent.contentOffset.x;
     const currentIndex = Math.round(scrollOffset / SCREEN_WIDTH);
@@ -54,12 +54,10 @@ export default function OnboardingScreen({ navigation }: RootStackScreenProps<'O
     }
   };
 
-  // Skip button: direct Welcome screen e niye jabe
   const handleSkip = () => {
     navigation.replace('Welcome');
   };
 
-  // Next button: porer slide e scroll korbe
   const handleNext = () => {
     if (activeIndex < SLIDES.length - 1) {
       flatListRef.current?.scrollToIndex({
@@ -73,8 +71,8 @@ export default function OnboardingScreen({ navigation }: RootStackScreenProps<'O
   };
 
   return (
-    <View className="flex-1 bg-white justify-between items-center py-12">
-      {/* 1. Top Header Logo (Padded) */}
+    <View className="w-full h-full bg-white flex justify-between items-center py-16">
+      {/* 1. Top Logo */}
       <View className="px-6 w-full items-center">
         <Image
           source={require('../../assets/images/logo/sub-logo.png')}
@@ -83,7 +81,7 @@ export default function OnboardingScreen({ navigation }: RootStackScreenProps<'O
         />
       </View>
 
-      {/* 2. Full-Width Edge-to-Edge Slider (No side clipping) */}
+      {/* 2. Full-Width Edge-to-Edge Slider */}
       <FlatList
         ref={flatListRef}
         data={SLIDES}
@@ -91,24 +89,32 @@ export default function OnboardingScreen({ navigation }: RootStackScreenProps<'O
         horizontal
         pagingEnabled
         bounces={false}
+        scrollEventThrottle={16}
         showsHorizontalScrollIndicator={false}
-        onMomentumScrollEnd={handleScroll}
-        className="w-full flex-grow-0"
+        onScroll={handleScroll}
+        getItemLayout={(_, index) => ({
+          length: SCREEN_WIDTH,
+          offset: SCREEN_WIDTH * index,
+          index,
+        })}
         renderItem={({ item }) => (
           <View
             style={{ width: SCREEN_WIDTH }}
-            className="items-center justify-center px-6 space-y-4"
+            className="items-center justify-center space-y-6"
           >
+            {/* Image container: no side padding, scales naturally */}
             <Image
               source={item.image}
-              className="w-[474px] h-[474px] max-w-full max-h-[340px]"
+              className="w-[320px] h-[320px] max-w-[85vw]"
               resizeMode="contain"
             />
-            <View className="space-y-2">
+
+            {/* Text container: padded cleanly with px-6 */}
+            <View className="px-6 space-y-3">
               <Text className="text-4xl font-extrabold text-center text-gray-900 leading-tight">
                 {item.title}
               </Text>
-              <Text className="text-base text-gray-500 text-center px-2">
+              <Text className="text-base text-gray-500 text-center px-4">
                 {item.description}
               </Text>
             </View>
@@ -116,37 +122,37 @@ export default function OnboardingScreen({ navigation }: RootStackScreenProps<'O
         )}
       />
 
-      {/* 3. Bottom Controls (Indicator dots + Buttons) */}
+      {/* 3. Bottom Controls */}
       <View className="w-full px-6 space-y-6">
-        {/* Modern Indicator Dots */}
-        <View className="flex-row justify-center items-center gap-2">
+        {/* Original Circular Indicator Dots */}
+        <View className="flex-row justify-center items-center gap-2 py-3">
           {SLIDES.map((_, index) => (
             <View
               key={index}
-              className={`h-2.5 rounded-full transition-all ${
-                index === activeIndex ? 'w-7 bg-[#5EAD1D]' : 'w-2.5 bg-[#ECF1E8]'
+              className={`size-4 rounded-full ${
+                index === activeIndex ? 'bg-[#5EAD1D]' : 'bg-[#ECF1E8]'
               }`}
             />
           ))}
         </View>
 
-        {/* Action Buttons Row */}
-        <View className="w-full flex-row gap-3 justify-between items-center">
+        {/* Buttons Row */}
+        <View className="w-full flex-row gap-2 justify-between items-center">
           <Pressable
             onPress={handleSkip}
-            className="w-[98px] h-[52px] rounded-xl bg-[#ECF1E8] flex justify-center items-center active:opacity-80"
+            className="w-[98px] h-[52px] rounded-lg bg-[#ECF1E8] flex justify-center items-center active:opacity-80"
           >
-            <Text className="font-bold text-[#5EAD1D] text-center text-base">
+            <Text className="font-bold text-[#5EAD1D] text-center py-3">
               Skip
             </Text>
           </Pressable>
 
           <Pressable
             onPress={handleNext}
-            className="flex-1 h-[52px] rounded-xl bg-[#5EAD1D] flex justify-center items-center active:opacity-80"
+            className="flex-1 h-[52px] rounded-lg bg-[#5EAD1D] flex justify-center items-center active:opacity-80"
           >
-            <Text className="font-bold text-white text-center text-base">
-              {activeIndex === SLIDES.length - 1 ? 'Get Started' : 'Next'}
+            <Text className="font-bold text-white text-center py-3">
+              Next
             </Text>
           </Pressable>
         </View>
