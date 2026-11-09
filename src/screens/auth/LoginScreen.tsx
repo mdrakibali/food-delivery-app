@@ -10,20 +10,29 @@ export default function LoginScreen({
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [showPassword, setShowPassword] = useState<boolean>(false);
-  const [error, setError] = useState<string>('');
+  const [emailError, setEmailError] = useState<string>('');
+  const [passwordError, setPasswordError] = useState<string>('');
   const [isEmailFocused, setIsEmailFocused] = useState<boolean>(false);
   const [isPasswordFocused, setIsPasswordFocused] = useState<boolean>(false);
 
   const handleSubmit = () => {
-    setError('');
+    let hasError = false;
+
     if (!email.trim()) {
-      setError('Please enter your email address');
-      return;
+      setEmailError('Please enter your email address');
+      hasError = true;
+    } else {
+      setEmailError('');
     }
+
     if (!password) {
-      setError('Please enter your password');
-      return;
+      setPasswordError('Please enter your password');
+      hasError = true;
+    } else {
+      setPasswordError('');
     }
+
+    if (hasError) return;
 
     // Login successful -> Navigate to Main App (Bottom Tabs)
     navigation.getParent()?.navigate('Main');
@@ -46,60 +55,67 @@ export default function LoginScreen({
               value={email}
               onChangeText={text => {
                 setEmail(text);
-                if (error) setError('');
+                if (emailError) setEmailError('');
               }}
               keyboardType="email-address"
               onFocus={() => setIsEmailFocused(true)}
               onBlur={() => setIsEmailFocused(false)}
               autoCapitalize="none"
               className={`w-full h-[54px] border px-4 rounded-xl text-base text-gray-900 bg-white ${
-                error && !email
+                emailError
                   ? 'border-red-500'
                   : isEmailFocused
                   ? 'border-[#54A312]'
                   : 'border-gray-200'
               }`}
             />
+            {emailError ? (
+              <Text className="text-red-500 text-xs px-1 pt-1">
+                {emailError}
+              </Text>
+            ) : null}
           </View>
 
           {/* Password Input */}
-          <View className="relative justify-center">
-            <TextInput
-              value={password}
-              onChangeText={text => {
-                setPassword(text);
-                if (error) setError('');
-              }}
-              onFocus={() => setIsPasswordFocused(true)}
-              onBlur={() => setIsPasswordFocused(false)}
-              secureTextEntry={!showPassword}
-              placeholder="Enter your password"
-              placeholderTextColor="#9CA3AF"
-              className={`w-full h-[54px] border px-4 pr-12 rounded-xl text-base text-gray-900 bg-white ${
-                error && !password
-                  ? 'border-red-500'
-                  : isPasswordFocused
-                  ? 'border-[#54A312]'
-                  : 'border-gray-200'
-              }`}
-            />
-            <Pressable
-              onPress={() => setShowPassword(!showPassword)}
-              className="absolute right-4 h-full justify-center"
-              hitSlop={12}
-            >
-              {showPassword ? (
-                <EyeOff size={22} color="#9CA3AF" />
-              ) : (
-                <Eye size={22} color="#9CA3AF" />
-              )}
-            </Pressable>
+          <View>
+            <View className="relative justify-center">
+              <TextInput
+                value={password}
+                onChangeText={text => {
+                  setPassword(text);
+                  if (passwordError) setPasswordError('');
+                }}
+                onFocus={() => setIsPasswordFocused(true)}
+                onBlur={() => setIsPasswordFocused(false)}
+                secureTextEntry={!showPassword}
+                placeholder="Enter your password"
+                placeholderTextColor="#9CA3AF"
+                className={`w-full h-[54px] border px-4 pr-12 rounded-xl text-base text-gray-900 bg-white ${
+                  passwordError
+                    ? 'border-red-500'
+                    : isPasswordFocused
+                    ? 'border-[#54A312]'
+                    : 'border-gray-200'
+                }`}
+              />
+              <Pressable
+                onPress={() => setShowPassword(!showPassword)}
+                className="absolute right-4 h-full justify-center"
+                hitSlop={12}
+              >
+                {showPassword ? (
+                  <EyeOff size={22} color="#9CA3AF" />
+                ) : (
+                  <Eye size={22} color="#9CA3AF" />
+                )}
+              </Pressable>
+            </View>
+            {passwordError ? (
+              <Text className="text-red-500 text-xs px-1 pt-1">
+                {passwordError}
+              </Text>
+            ) : null}
           </View>
-
-          {/* Error Message */}
-          {error ? (
-            <Text className="text-red-500 text-xs px-1">{error}</Text>
-          ) : null}
 
           {/* Forgot Password Link */}
           <Pressable
