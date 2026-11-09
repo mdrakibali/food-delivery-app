@@ -2,5 +2,7 @@
     "css.lint.unknownAtRules": "ignore",
     "files.associations": {
         "*.css": "tailwindcss"
-    }
+    },
+    "editor.hover.sticky": false,
+    "editor.hover.hidingDelay": 100
 }

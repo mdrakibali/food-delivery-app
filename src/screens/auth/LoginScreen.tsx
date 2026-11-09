@@ -120,7 +120,7 @@ export default function LoginScreen({
           {/* Forgot Password Link */}
           <Pressable
             onPress={() => {
-              /* Forgot password flow */
+              navigation.navigate('ForgotPassword');
             }}
             className="pt-2 items-center"
           >

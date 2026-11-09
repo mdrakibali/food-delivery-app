@@ -45,17 +45,14 @@ export default function AuthLayout({
   };
 
   return (
-    <KeyboardAvoidingView
-      behavior="padding"
-      className="flex-1 bg-white"
-    >
+    <KeyboardAvoidingView behavior="padding" className="flex-1 bg-white">
       <ScrollView
         ref={scrollViewRef}
         // eslint-disable-next-line react-native/no-inline-styles
         contentContainerStyle={{ flexGrow: 1 }}
         keyboardShouldPersistTaps="handled"
         showsVerticalScrollIndicator={false}
-        className="flex-1 bg-white px-6 py-12"
+        className="flex-1 bg-white px-6 py-16"
       >
         {/* Header: Back Button & Center Logo */}
         <View className="flex-row items-center justify-between mb-8">
