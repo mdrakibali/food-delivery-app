@@ -2,7 +2,7 @@
   "name": "FoodDelivery",
   "version": "0.0.1",
   "private": true,
-"scripts": {
+  "scripts": {
     "start": "react-native start",
     "reverse": "adb reverse tcp:8081 tcp:8081",
     "mirror": "scrcpy &",
@@ -34,6 +34,7 @@
     "react-hook-form": "^7.91.0",
     "react-native": "0.88.1",
     "react-native-gesture-handler": "^3.5.0",
+    "react-native-image-crop-picker": "^0.52.0",
     "react-native-mmkv": "^4.3.2",
     "react-native-nitro-modules": "^0.37.2",
     "react-native-reanimated": "^4.7.1",

@@ -56,7 +56,7 @@ export default function RegisterScreen({
     <AuthLayout>
       <View className="flex-1 justify-between">
         {/* Top Section: Title, Subtitle & Inputs */}
-        <View className="flex gap-4">
+        <View className="flex gap-4 mb-10">
           <Text className="text-4xl font-extrabold text-[#222222] mb-1 leading-tight">
             Create a new{'\n'}account
           </Text>
@@ -171,9 +171,7 @@ export default function RegisterScreen({
             onPress={handleRegister}
             className="w-full h-[54px] bg-[#54A312] rounded-xl justify-center items-center active:opacity-85"
           >
-            <Text className="text-lg text-white font-bold">
-              Create account
-            </Text>
+            <Text className="text-lg text-white font-bold">Create account</Text>
           </Pressable>
 
           {/* Already have an account? Log in */}
