@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
-import { MoveLeftIcon } from 'lucide-react-native';
+import { ChevronLeft } from 'lucide-react-native';
 import React, { useEffect, useRef } from 'react';
 import {
   Image,
@@ -61,7 +61,7 @@ export default function AuthLayout({
             onPress={handleBack}
             hitSlop={10}
           >
-            <MoveLeftIcon size={18} color="#222" />
+            <ChevronLeft size={18} color="#222" />
             <Text className="text-base font-semibold text-gray-800">Back</Text>
           </Pressable>
 

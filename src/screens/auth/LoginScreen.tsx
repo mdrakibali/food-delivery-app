@@ -43,7 +43,7 @@ export default function LoginScreen({
       <View className="flex-1 justify-between">
         {/* Top Section: Title & Inputs */}
         <View className="flex gap-4">
-          <Text className="text-4xl font-extrabold text-[#222222] mb-3 leading-tight">
+          <Text className="text-4xl font-extrabold text-[#363A33] mb-3 leading-tight">
             Log in to your{'\n'}account
           </Text>
 

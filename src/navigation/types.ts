@@ -7,6 +7,9 @@ export type AuthStackParamList = {
   Login: undefined;
   Register: undefined;
   ForgotPassword: undefined;
+  VerifyAccount: { email?: string } | undefined;
+  VerifyForgotPassword: { email?: string } | undefined;
+  ResetPassword: undefined;
 };
 
 // 2. Main Tab/Stack Param List

@@ -16,12 +16,13 @@ export default function ForgotPasswordScreen({
       return;
     }
     setEmailError('');
+    navigation.navigate('VerifyForgotPassword', { email });
   };
   return (
     <AuthLayout>
       <View className="flex-1 justify-between">
         <View className="flex gap-4">
-          <Text className="text-4xl font-extrabold text-[#222222] mb-3 leading-tight">
+          <Text className="text-4xl font-extrabold text-[#363A33] mb-3 leading-tight">
             Forgot your{'\n'}password
           </Text>
           {/* Email Input */}
@@ -53,14 +54,15 @@ export default function ForgotPasswordScreen({
             ) : null}
           </View>
         </View>
-      </View>
-      <View className="flex gap-3">
-        <Pressable
-          onPress={handleForgotPassword}
-          className="w-full h-[54px] bg-[#54A312] rounded-xl justify-center items-center active:opacity-85"
-        >
-          <Text className="text-lg text-white font-bold">Continue</Text>
-        </Pressable>
+
+        <View className="flex gap-3">
+          <Pressable
+            onPress={handleForgotPassword}
+            className="w-full h-[54px] bg-[#54A312] rounded-xl justify-center items-center active:opacity-85"
+          >
+            <Text className="text-lg text-white font-bold">Continue</Text>
+          </Pressable>
+        </View>
       </View>
     </AuthLayout>
   );
