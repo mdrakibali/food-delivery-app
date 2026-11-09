@@ -1,17 +1,15 @@
 import React, { useRef, useState } from 'react';
 import {
-  Dimensions,
   FlatList,
   Image,
   NativeScrollEvent,
   NativeSyntheticEvent,
   Pressable,
   Text,
+  useWindowDimensions,
   View,
 } from 'react-native';
 import type { RootStackScreenProps } from '../../navigation/types';
-
-const { width: SCREEN_WIDTH } = Dimensions.get('window');
 
 interface OnboardingSlide {
   id: string;
@@ -31,25 +29,33 @@ const SLIDES: OnboardingSlide[] = [
     id: '2',
     image: require('../../assets/images/splash/delivery-man.png'),
     title: 'We use nitro on bicycles for delivery!',
-    description: "For very fast delivery we use nitro on bicycles, kidding, but we're very fast.",
+    description:
+      "For very fast delivery we use nitro on bicycles, kidding, but we're very fast.",
   },
   {
     id: '3',
     image: require('../../assets/images/splash/birthday-girl.png'),
     title: "We're the besties of birthday peoples",
-    description: 'We send cakes to our plus members, (only one cake per person)',
+    description:
+      'We send cakes to our plus members, (only one cake per person)',
   },
 ];
 
-export default function OnboardingScreen({ navigation }: RootStackScreenProps<'Onboarding'>) {
+export default function OnboardingScreen({
+  navigation,
+}: RootStackScreenProps<'Onboarding'>) {
+  const { width: SCREEN_WIDTH } = useWindowDimensions();
   const [activeIndex, setActiveIndex] = useState(0);
   const flatListRef = useRef<FlatList>(null);
 
-  // Real-time scroll listener: swipe korar sathe sathe smooth vabe index update hobe
   const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const scrollOffset = event.nativeEvent.contentOffset.x;
     const currentIndex = Math.round(scrollOffset / SCREEN_WIDTH);
-    if (currentIndex !== activeIndex && currentIndex >= 0 && currentIndex < SLIDES.length) {
+    if (
+      currentIndex !== activeIndex &&
+      currentIndex >= 0 &&
+      currentIndex < SLIDES.length
+    ) {
       setActiveIndex(currentIndex);
     }
   };
@@ -151,9 +157,7 @@ export default function OnboardingScreen({ navigation }: RootStackScreenProps<'O
             onPress={handleNext}
             className="flex-1 h-[52px] rounded-lg bg-[#5EAD1D] flex justify-center items-center active:opacity-80"
           >
-            <Text className="font-bold text-white text-center py-3">
-              Next
-            </Text>
+            <Text className="font-bold text-white text-center py-3">Next</Text>
           </Pressable>
         </View>
       </View>
